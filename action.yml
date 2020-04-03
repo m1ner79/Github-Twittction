@@ -1,0 +1,11 @@
+name : 'Twitter Action'
+descryption: 'Post on twitter after pull request'
+# This workflow is triggered on push or pull request to the repository.
+on: [push, pull_request]
+jobs:
+  my_job:
+    name: Twitting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a tweet
+        uses: 
