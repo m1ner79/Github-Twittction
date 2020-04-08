@@ -1,4 +1,4 @@
-const Twitter = require('twitter');
+const Twitter = require('twitter-lite');
 
 const client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -9,16 +9,13 @@ const client = new Twitter({
  
 const params = {screen_name: 'derberq'};
 
-/*async function getTweets(p){
+async function getTweets(p){
+  await client.get('statuses/user_timeline', p)
+}
 
-}*/
+//await getTweets(params);
 
-//await getTweets(params)
+//const tweets = await client.get('statuses/user_timeline', params)
+//getTweets(params);
 
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
-  }else {
-      console.log(error);
-  }
-});
+//console.log(getTweets(params)
