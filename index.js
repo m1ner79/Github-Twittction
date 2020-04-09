@@ -9,7 +9,7 @@ const client = new Twitter({
  
 const params = {screen_name: 'derberq'};
 
-function ahole(m){
+function myFunction(m){
   console.log(m[0].id, m[0].text);
 }
 
@@ -23,9 +23,6 @@ async function getTweets(p){
   
 }
 
-//await getTweets(params);
 
-//const tweets = await client.get('statuses/user_timeline', params)
-getTweets(params).then(ahole);
+getTweets(params).then(myFunction);
 
-//console.log(getTweets(params)
