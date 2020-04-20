@@ -9,9 +9,9 @@ const client = new Twitter({
  
 const params = {screen_name: 'derberq'};
 
-function myFunction(m){
-  console.log(m[0].id, m[0].text);
-}
+//function myFunction(m){
+ // console.log(m[0].id, m[0].text);
+//}
 
 async function getTweets(p){
   try{
@@ -23,6 +23,23 @@ async function getTweets(p){
   
 }
 
+const paramPost = {status: "My second tweet via terminal"}
+const paramPost1 = {status: "My third tweet via terminal"}
 
-getTweets(params).then(myFunction);
+async function postTweets(p){
+  try{
+    return await client.post('statuses/update', p);
+  }
+  catch(e){
+    console.log(e);
+  }
+}
 
+function getServerResponse(p){
+  console.log(p.id, p.text, p.created_at);
+}
+
+
+getTweets(params).then((m)=>{getServerResponse(m[0])});
+postTweets(paramPost).then(getServerResponse);
+postTweets(paramPost1).then(getServerResponse);
