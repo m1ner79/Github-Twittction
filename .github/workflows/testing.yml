@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     name: somethingDope
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: using my action
         uses: m1ner79/twitterGitHubActions 
