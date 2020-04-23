@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: using my action
-        uses: m1ner79/twitterGitHubActions 
+        uses: m1ner79/twitterGitHubActions@v0.0.2
         env:
             TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }} 
             TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
