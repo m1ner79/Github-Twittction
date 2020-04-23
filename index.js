@@ -7,13 +7,13 @@ const client = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
  
-const params = {screen_name: 'derberq'};
+//const params = {screen_name: 'derberq'};
 
 //function myFunction(m){
  // console.log(m[0].id, m[0].text);
 //}
 
-async function getTweets(p){
+/*async function getTweets(p){
   try{
     return await client.get('statuses/user_timeline', p);
   }
@@ -21,10 +21,10 @@ async function getTweets(p){
     console.log(e);
   }
   
-}
+}*/
 
 const paramPost = {status: "My second tweet via terminal"}
-const paramPost1 = {status: "My third tweet via terminal"}
+
 
 async function postTweets(p){
   try{
@@ -40,6 +40,6 @@ function getServerResponse(p){
 }
 
 
-getTweets(params).then((m)=>{getServerResponse(m[0])});
+//getTweets(params).then((m)=>{getServerResponse(m[0])});
 postTweets(paramPost).then(getServerResponse);
-postTweets(paramPost1).then(getServerResponse);
+

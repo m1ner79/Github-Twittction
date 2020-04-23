@@ -1,0 +1,21 @@
+name: testing workflow
+
+on: 
+  release:
+    types: 
+    - published
+
+jobs:
+  test:
+    name: somethingDope
+    runs on: ubuntu-latest
+    steps:
+      - name: using my action
+        uses: m1ner79/twitterGitHubActions 
+        env:
+            TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }} 
+            TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
+            TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
+            TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
+        
+         
