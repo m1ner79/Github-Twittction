@@ -2,10 +2,11 @@
   "name": "twittergithubactions",
   "version": "0.0.1",
   "description": "Sending tweets every time there is push/pull request on GitHub",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "package": "ncc build index.js -o dist"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,11 @@
   },
   "homepage": "https://github.com/m1ner79/twitterGitHubActions#readme",
   "dependencies": {
+    "@actions/core": "^1.2.3",
     "twitter-lite": "^0.9.4"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.1",
+    "jest": "^25.4.0"
   }
 }
