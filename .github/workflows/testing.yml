@@ -1,5 +1,4 @@
 name: 'testing workflow'
-descryption: 'Post on twitter after pull request'
 on: [push, pull_request]
 jobs:
   test:
