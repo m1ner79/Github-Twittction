@@ -1,10 +1,6 @@
-name: testing workflow
-
-on: 
-  release:
-    types: 
-    - published
-
+name: 'testing workflow'
+descryption: 'Post on twitter after pull request'
+on: [push, pull_request]
 jobs:
   test:
     name: somethingDope
@@ -17,5 +13,3 @@ jobs:
             TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
             TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
             TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
-        
-         
