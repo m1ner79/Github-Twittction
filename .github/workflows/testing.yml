@@ -1,9 +1,11 @@
 name: 'testing workflow'
-on: [push, pull_request]
+# Trigger on push
+on: push
+  
 jobs:
   test:
     name: somethingDope
-    runs: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: using my action
         uses: m1ner79/twitterGitHubActions@v0.0.2
