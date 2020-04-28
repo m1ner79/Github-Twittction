@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   test:
     name: somethingDope
-    runs-on: ubuntu-latest
+    runs: ubuntu-latest
     steps:
       - name: using my action
         uses: m1ner79/twitterGitHubActions@v0.0.2
