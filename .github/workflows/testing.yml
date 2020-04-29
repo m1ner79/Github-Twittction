@@ -9,11 +9,8 @@ jobs:
     steps:
       - name: using my action
         uses: m1ner79/twitterGitHubActions@v0.0.2
-        env:
+        with:
             TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }} 
             TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
             TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
             TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
-runs:
-  using: 'node12'
-  main: 'index.js'
