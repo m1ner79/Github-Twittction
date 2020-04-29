@@ -7,9 +7,9 @@ jobs:
     name: somethingDope
     runs-on: ubuntu-latest
     steps:
-      - name: using my action
-        uses: m1ner79/twitterGitHubActions@v0.0.2
-        with:
+      - uses: actions/checkout@v2
+      - uses: ./
+        env:
             TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }} 
             TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
             TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
