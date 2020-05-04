@@ -1,19 +1,21 @@
 name : 'Twitter Action'
 descryption: 'Post on twitter after pull request'
-# This workflow is triggered on push or pull request to the repository.
-on: [push, pull_request]
-jobs:
-  build:
-    # Job name is Tweeting
-    name: Tweeting
-    # This job runs on Linux
-    runs-on: ubuntu-latest
-    steps:
-      # This step uses GitHub's twitterGitHubActions: https://github.com/m1ner79/twitterGitHubActions
-      - name: using my action
-        uses: m1ner79/twitterGitHubActions@v0.0.2
-        env:
-            TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }} 
-            TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
-            TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
-            TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
+inputs:
+  twitter_consumer_key: 
+    description: ''
+    required: true
+  twitter_consumer_secret: 
+    description: ''
+    required: true
+  twitter_access_token_key: 
+    description: ''
+    required: true
+  twitter_access_token_secret:
+    description: ''
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'file-text'
+  color: purple

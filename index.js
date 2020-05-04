@@ -1,4 +1,8 @@
 const Twitter = require('twitter-lite');
+const core = require('@actions/core');
+
+const consumer_key = core.getInput('twitter_consumer_key');
+console.log(consumer_key);
 
 const client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
