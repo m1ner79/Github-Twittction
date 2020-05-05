@@ -1,17 +1,17 @@
 name : 'Twitter Action'
-descryption: 'Post on twitter after pull request'
+descryption: 'Post on twitter after pull/push request'
 inputs:
   twitter_consumer_key: 
-    description: ''
+    description: 'Twitter Consumer Key is referenced here'
     required: true
   twitter_consumer_secret: 
-    description: ''
+    description: 'Twitter Consumer Secret is referenced here'
     required: true
   twitter_access_token_key: 
-    description: ''
+    description: 'Twitter Access Token Key is referenced here'
     required: true
   twitter_access_token_secret:
-    description: ''
+    description: 'Twitter Access Token Secret is referenced here'
     required: true
 runs:
   using: 'node12'
