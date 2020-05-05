@@ -8,8 +8,8 @@ Please use it only at your own risk. This is very early stage development and on
 
 ### Example usage
 
-name: 'testing workflow'
 ```md
+name: 'testing workflow'
 on: push
   
 jobs:
