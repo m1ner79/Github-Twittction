@@ -17,7 +17,8 @@ jobs:
     name: somethingDope
     runs-on: ubuntu-latest
     steps:
-      - uses: here you will reference your own action
+      - uses: actions/checkout@v2
+      - uses: ./
         with:
             TWITTER_CONSUMER_KEY: here you will enter your own twitter_consumer_key
             TWITTER_CONSUMER_SECRET: here you will enter your own twitter_consumer_secret
