@@ -65,13 +65,16 @@ const Twitter = __webpack_require__(851);
 const core = __webpack_require__(470);
 
 const consumer_key = core.getInput('twitter_consumer_key');
+const consumer_secret = core.getInput('twitter_consumer_secret');
+const access_token_key = core.getInput('twitter_access_token_key');
+const access_token_secret = core.getInput('twitter_access_token_secret');
 console.log(consumer_key);
 
 const client = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+    consumer_key: consumer_key || process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: consumer_secret || process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: access_token_key || process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: access_token_secret || process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
  
 //const params = {screen_name: 'derberq'};
@@ -90,7 +93,7 @@ const client = new Twitter({
   
 }*/
 
-const paramPost = {status: "My second tweet via terminal"}
+const paramPost = {status: "tweeting with GitHub action"}
 
 
 async function postTweets(p){
