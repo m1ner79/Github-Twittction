@@ -1,11 +1,13 @@
 const Twitter = require('twitter-lite');
 const core = require('@actions/core');
+const { readFileSync } = require("fs");
+
 
 const consumer_key = core.getInput('twitter_consumer_key');
 const consumer_secret = core.getInput('twitter_consumer_secret');
 const access_token_key = core.getInput('twitter_access_token_key');
 const access_token_secret = core.getInput('twitter_access_token_secret');
-console.log(consumer_key);
+
 
 const client = new Twitter({
     consumer_key: consumer_key || process.env.TWITTER_CONSUMER_KEY,
@@ -30,8 +32,13 @@ const client = new Twitter({
   
 }*/
 
-const paramPost = {status: "tweeting with GitHub action"}
+const payload = JSON.parse(
+  readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
+);
 
+const tweetingStatus = "GitHub Action tweeting: " + payload.commits[0].message;
+
+const paramPost = {status: tweetingStatus};
 
 async function postTweets(p){
   try{

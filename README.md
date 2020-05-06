@@ -1,6 +1,6 @@
 # Twitter github action
 
-This action will post on twitter every time there is push/pull request on a github repository.
+This action will post on twitter every time there is an event on a github repository.
 
 ## Warning!
 
