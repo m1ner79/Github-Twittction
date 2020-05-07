@@ -52,7 +52,7 @@ if (access_token_secret == undefined){
 }
 
 
-/*
+
 const client = new Twitter({
     consumer_key: consumer_key,
     consumer_secret: consumer_secret,
@@ -64,7 +64,11 @@ const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
 
-const tweetingStatus = "GitHub Action tweeting: " + payload.commits[0].message; 
+var part1 = commits[0].author.name;
+var part2 = commits[0].message;
+
+
+const tweetingStatus = part1.concat(part2);  //"GitHub Action tweeting: " + payload.commits[0].message; 
 
 const paramPost = {status: tweetingStatus};
 
@@ -85,4 +89,3 @@ function getServerResponse(p){
 //getTweets(params).then((m)=>{getServerResponse(m[0])});
 postTweets(paramPost).then(getServerResponse);
 
-*/
