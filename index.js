@@ -48,11 +48,11 @@ const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
 
-var part1 = payload.commits[0].author.name;
+var part1 = payload.commits.author.name;
 var part2 = " just created a commit: ";
 var part3 = payload.commits[0].message;
 var part4 = " More info is available here: ";
-var part5 = payload.commits[0].url;
+var part5 = payload.commits.url;
 
 
 const tweetingStatus = part1.concat(part2, part3, part4, part5);  //"GitHub Action tweeting: " + payload.commits[0].message; 
