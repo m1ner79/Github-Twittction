@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "package": "ncc build index.js -o dist"
+    "package": "ncc build index.js -o dist",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
+  "pre-commit": ["precommit-msg", "package"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/m1ner79/twitterGitHubActions.git"
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.1",
-    "jest": "^25.4.0"
+    "jest": "^25.4.0",
+    "pre-commit": "^1.2.2"
   }
 }

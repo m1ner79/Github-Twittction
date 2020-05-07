@@ -20,8 +20,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-            TWITTER_CONSUMER_KEY: here you will enter your own twitter_consumer_key
-            TWITTER_CONSUMER_SECRET: here you will enter your own twitter_consumer_secret
-            TWITTER_ACCESS_TOKEN_KEY: here you will enter your own twitter_access_token_key
-            TWITTER_ACCESS_TOKEN_SECRET: here you will enter your own twitter_access_token_secret
+            twitter_consumer_key: here you will enter your own twitter_consumer_key
+            twitter_consumer_secret: here you will enter your own twitter_consumer_secret
+            twitter_access_token_key: here you will enter your own twitter_access_token_key
+            twitter_access_token_secret: here you will enter your own twitter_access_token_secret
 ```
