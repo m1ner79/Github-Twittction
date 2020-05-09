@@ -91,7 +91,7 @@ const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
 
-const tweetingStatus = `${payload.commits.author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits.url}`;
+const tweetingStatus = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
 
 console.log(tweetingStatus);
 
