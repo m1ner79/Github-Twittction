@@ -11,30 +11,10 @@ const access_token_secret = core.getInput('twitter_access_token_secret') || proc
 
 //validating twitter cridentials
 
-if (consumer_key == undefined){
-  console.log("Couldn't validate your consumer_key!");
-} else{
-  console.log("Successfull verification!")
-}
-
-if (consumer_secret == undefined){
-  console.log("Couldn't validate your consumer_secret!");
-} else{
-  console.log("Successfull verification!")
-}
-
-if (access_token_key == undefined){
-  console.log("Couldn't validate your access_token_key!");
-} else{
-  console.log("Successfull verification!")
-}
-
-if (access_token_secret == undefined){
-  console.log("Couldn't validate your access_token_secret!");
-} else{
-  console.log("Successfull verification!")
-}
-
+if (!consumer_key) core.setFailed("consumer_key is missing!");
+if (!consumer_secret) core.setFailed("consumer_secret is missing!");
+if (!access_token_key) core.setFailed("access_token_key is missing!");
+if (!access_token_secret) core.setFailed("access_token_secret is missing!");
 
 
 const client = new Twitter({
@@ -48,14 +28,8 @@ const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
 
-var part1 = payload.commits.author.name;
-var part2 = " just created a commit: ";
-var part3 = payload.commits[0].message;
-var part4 = " More info is available here: ";
-var part5 = payload.commits.url;
+const tweetingStatus = `${payload.commits.author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits.url}`;
 
-
-const tweetingStatus = part1.concat(part2, part3, part4, part5);  //"GitHub Action tweeting: " + payload.commits[0].message; 
 console.log(tweetingStatus);
 
 
