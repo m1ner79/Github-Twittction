@@ -18,12 +18,12 @@ const defaultMessage = `${payload.commits[0].author.name} just created a commit:
 
 const tweetingStatus = message ? message : defaultMessage;
 
-console.log(tweetingStatus);
-
 //validating twitter cridentials
 function validateInput(inputValue, inputName){
-  console.log("missing input?",!inputValue);
-  if (!inputValue) core.setFailed(`${inputName} is missing!`);
+  if (inputValue) return;
+
+  core.setFailed(`${inputName} is missing!`);
+  throw new Error("input missing");
 }
 
 validateInput(consumer_key, "consumer_key");
