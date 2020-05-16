@@ -22,6 +22,7 @@ console.log(tweetingStatus);
 
 //validating twitter cridentials
 function validateInput(inputValue){
+  console.log("missing input?",!inputValue);
   if (!inputValue) core.setFailed(`${inputValue} is missing!`);
 }
 
