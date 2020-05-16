@@ -8,13 +8,13 @@ const consumer_secret = core.getInput('twitter_consumer_secret') || process.env.
 const access_token_key = core.getInput('twitter_access_token_key') || process.env.TWITTER_ACCESS_TOKEN_KEY;
 const access_token_secret = core.getInput('twitter_access_token_secret') || process.env.TWITTER_ACCESS_TOKEN_SECRET;
 
-const message = core.getInput('twitter_status');
-const defaultMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
-
-
 const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
+
+const message = core.getInput('twitter_status');
+const defaultMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
+
 
 const tweetingStatus = message ? message : defaultMessage;
 
