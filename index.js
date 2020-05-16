@@ -21,15 +21,15 @@ const tweetingStatus = message ? message : defaultMessage;
 console.log(tweetingStatus);
 
 //validating twitter cridentials
-function validateInput(inputValue){
+function validateInput(inputValue, inputName){
   console.log("missing input?",!inputValue);
-  if (!inputValue) core.setFailed(`${inputValue} is missing!`);
+  if (!inputValue) core.setFailed(`${inputName} is missing!`);
 }
 
-validateInput(consumer_key);
-validateInput(consumer_secret);
-validateInput(access_token_key);
-validateInput(access_token_secret);
+validateInput(consumer_key, "consumer_key");
+validateInput(consumer_secret, "consumer_secret");
+validateInput(access_token_key, "access_token_key");
+validateInput(access_token_secret, "access_token_secret");
 
 
 const client = new Twitter({
