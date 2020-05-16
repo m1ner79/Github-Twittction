@@ -1,6 +1,8 @@
 name : 'Twitter Action'
 description: 'Post on twitter after different github events'
 inputs:
+  twitter_status:
+    description: 'Message posted on twitter'
   twitter_consumer_key: 
     description: 'Twitter Consumer Key is referenced here'
     required: true

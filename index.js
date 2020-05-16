@@ -7,14 +7,28 @@ const consumer_key = core.getInput('twitter_consumer_key') || process.env.TWITTE
 const consumer_secret = core.getInput('twitter_consumer_secret') || process.env.TWITTER_CONSUMER_SECRET;
 const access_token_key = core.getInput('twitter_access_token_key') || process.env.TWITTER_ACCESS_TOKEN_KEY;
 const access_token_secret = core.getInput('twitter_access_token_secret') || process.env.TWITTER_ACCESS_TOKEN_SECRET;
-//console.log(consumer_key);
+
+const message = core.getInput('twitter_status');
+const defaultMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
+
+
+const payload = JSON.parse(
+  readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
+);
+
+const tweetingStatus = message ? message : defaultMessage;
+
+console.log(tweetingStatus);
 
 //validating twitter cridentials
+function validateInput(inputValue){
+  if (!inputValue) core.setFailed(`${inputValue} is missing!`);
+}
 
-if (!consumer_key) core.setFailed("consumer_key is missing!");
-if (!consumer_secret) core.setFailed("consumer_secret is missing!");
-if (!access_token_key) core.setFailed("access_token_key is missing!");
-if (!access_token_secret) core.setFailed("access_token_secret is missing!");
+validateInput(consumer_key);
+validateInput(consumer_secret);
+validateInput(access_token_key);
+validateInput(access_token_secret);
 
 
 const client = new Twitter({
@@ -23,14 +37,6 @@ const client = new Twitter({
     access_token_key: access_token_key,
     access_token_secret: access_token_secret
   });
-
-const payload = JSON.parse(
-  readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
-);
-
-const tweetingStatus = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
-
-console.log(tweetingStatus);
 
 
 const paramPost = {status: tweetingStatus};
