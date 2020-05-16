@@ -64,7 +64,7 @@ module.exports = require("os");
 const Twitter = __webpack_require__(851);
 const core = __webpack_require__(470);
 const { readFileSync } = __webpack_require__(747);
-
+const { validateInput} = __webpack_require__(543);
 
 const consumer_key = core.getInput('twitter_consumer_key') || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret') || process.env.TWITTER_CONSUMER_SECRET;
@@ -80,14 +80,6 @@ const defaultMessage = `${payload.commits[0].author.name} just created a commit:
 
 
 const tweetingStatus = message ? message : defaultMessage;
-
-//validating twitter cridentials
-function validateInput(inputValue, inputName){
-  if (inputValue) return;
-
-  core.setFailed(`${inputName} is missing!`);
-  throw new Error("input missing");
-}
 
 validateInput(consumer_key, "consumer_key");
 validateInput(consumer_secret, "consumer_secret");
@@ -2102,6 +2094,21 @@ function getState(name) {
 }
 exports.getState = getState;
 //# sourceMappingURL=core.js.map
+
+/***/ }),
+
+/***/ 543:
+/***/ (function(module) {
+
+//validating twitter cridentials
+function validateInput(inputValue, inputName){
+    if (inputValue) return;
+  
+    core.setFailed(`${inputName} is missing!`);
+    throw new Error("input missing");
+  }
+
+  module.exports.validateInput = validateInput;
 
 /***/ }),
 

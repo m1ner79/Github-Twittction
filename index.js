@@ -1,7 +1,7 @@
 const Twitter = require('twitter-lite');
 const core = require('@actions/core');
 const { readFileSync } = require("fs");
-
+const { validateInput} = require("./src/utils");
 
 const consumer_key = core.getInput('twitter_consumer_key') || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret') || process.env.TWITTER_CONSUMER_SECRET;
@@ -17,14 +17,6 @@ const defaultMessage = `${payload.commits[0].author.name} just created a commit:
 
 
 const tweetingStatus = message ? message : defaultMessage;
-
-//validating twitter cridentials
-function validateInput(inputValue, inputName){
-  if (inputValue) return;
-
-  core.setFailed(`${inputName} is missing!`);
-  throw new Error("input missing");
-}
 
 validateInput(consumer_key, "consumer_key");
 validateInput(consumer_secret, "consumer_secret");
