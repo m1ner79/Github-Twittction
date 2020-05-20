@@ -46,7 +46,7 @@ module.exports =
 /***/ 0:
 /***/ (function(module) {
 
-async function postTweets(p){
+async function postTweets(client, p){
     try{
       return await client.post('statuses/update', p);
     }
@@ -138,7 +138,7 @@ function getServerResponse(p){
 
 
 //getTweets(params).then((m)=>{getServerResponse(m[0])});
-postTweets(paramPost).then(getServerResponse);
+postTweets(client, paramPost).then(getServerResponse);
 
 
 

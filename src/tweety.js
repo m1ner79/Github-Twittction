@@ -1,4 +1,4 @@
-async function postTweets(p){
+async function postTweets(client, p){
     try{
       return await client.post('statuses/update', p);
     }

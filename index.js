@@ -60,5 +60,5 @@ function getServerResponse(p){
 
 
 //getTweets(params).then((m)=>{getServerResponse(m[0])});
-postTweets(paramPost).then(getServerResponse);
+postTweets(client, paramPost).then(getServerResponse);
 
