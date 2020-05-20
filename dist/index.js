@@ -98,7 +98,7 @@ let tweetingStatus;
 
 switch (process.env.GITHUB_EVENT_NAME) {
   case "push":
-    tweetingStatus = message || `${payload.pusher.name} just created a push. More info is available here: ${payload.repository.url}`;
+    tweetingStatus = message || `${payload.pusher.name} just created a push. More info is available here: ${payload.repository.git_commits_url}`;
     break;
   case "pull_request":
     tweetingStatus = message || `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
