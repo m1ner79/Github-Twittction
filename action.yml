@@ -19,5 +19,5 @@ runs:
   using: 'node12'
   main: 'dist/index.js'
 branding:
-  icon: 'file-text'
-  color: purple
+  icon: 'at-sign'
+  color: 'blue'
