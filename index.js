@@ -2,6 +2,7 @@ const Twitter = require('twitter-lite');
 const core = require('@actions/core');
 const { readFileSync } = require("fs");
 const { validateInput} = require("./src/utils");
+const { postTweets} = require("./src/tweety");
 
 const consumer_key = core.getInput('twitter_consumer_key') || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret') || process.env.TWITTER_CONSUMER_SECRET;
@@ -13,10 +14,31 @@ const payload = JSON.parse(
 );
 
 const message = core.getInput('twitter_status');
-const defaultMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
+const defaultCommitMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
+const defaultPushMessage = `${payload.pusher.name} just created a push: ${payload.commits[0].message}. More info is available here: ${payload.sender.url}`;
+const defaultPullMessage = `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
+const defaultReleaseMessage = `${payload.release.author.login} just published a release. More info is available here: ${payload.relese.url}`;
 
+let tweetingStatus;
 
-const tweetingStatus = message ? message : defaultMessage;
+switch (process.env.GITHUB_EVENT_NAME) {
+  case "push":
+    tweetingStatus = message || defaultPushMessage;
+    break;
+  case "pull_request":
+    tweetingStatus = message || defaultPullMessage;
+    break;
+  case "release":
+    tweetingStatus = message || defaultReleaseMessage;
+    break;
+  default:
+    if (message) {
+      tweetingStatus = message;
+    } else {
+      throw new Error(`${process.env.GITHUB_EVENT_NAME} is not supported with default message. Provide custom message using tweeter_status input parameter.`);
+    }
+    break;
+}
 
 validateInput(consumer_key, "consumer_key");
 validateInput(consumer_secret, "consumer_secret");
@@ -34,14 +56,6 @@ const client = new Twitter({
 
 const paramPost = {status: tweetingStatus};
 
-async function postTweets(p){
-  try{
-    return await client.post('statuses/update', p);
-  }
-  catch(e){
-    console.log(e);
-  }
-}
 
 function getServerResponse(p){
   console.log(p.id, p.text, p.created_at);

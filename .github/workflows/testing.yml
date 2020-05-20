@@ -1,6 +1,9 @@
 name: 'testing workflow'
 # Trigger on push
-on: push
+on: 
+  - push
+  - pull_request
+  - release
   
 jobs:
   test:
