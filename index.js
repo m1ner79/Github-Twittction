@@ -20,13 +20,13 @@ let tweetingStatus;
 
 switch (process.env.GITHUB_EVENT_NAME) {
   case "push":
-    tweetingStatus = message || `${payload.pusher.name} just created a push. More info is available here: ${payload.commits[0].url}`;
+    tweetingStatus = message || `${payload.pusher.name} just created a push. More details are available here: ${payload.commits[0].url}`;
     break;
   case "pull_request":
     tweetingStatus = message || `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
     break;
   case "release":
-    tweetingStatus = message || `${payload.release.author.login} just published a release. More info is available here: ${payload.relese.url}`;
+    tweetingStatus = message || `${payload.release.author.login} just published a new release. More details are available here: ${payload.release.url}`;
     break;
   default:
     if (message) {
