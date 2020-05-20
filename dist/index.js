@@ -92,22 +92,19 @@ const payload = JSON.parse(
 );
 
 const message = core.getInput('twitter_status');
-const defaultCommitMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
-const defaultPushMessage = `${payload.pusher.name} just created a push: ${payload.commits[0].message}. More info is available here: ${payload.sender.url}`;
-const defaultPullMessage = `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
-const defaultReleaseMessage = `${payload.release.author.login} just published a release. More info is available here: ${payload.relese.url}`;
+//const defaultCommitMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
 
 let tweetingStatus;
 
 switch (process.env.GITHUB_EVENT_NAME) {
   case "push":
-    tweetingStatus = message || defaultPushMessage;
+    tweetingStatus = message || `${payload.pusher.name} just created a push: ${payload.commits[0].message}. More info is available here: ${payload.sender.url}`;
     break;
   case "pull_request":
-    tweetingStatus = message || defaultPullMessage;
+    tweetingStatus = message || `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
     break;
   case "release":
-    tweetingStatus = message || defaultReleaseMessage;
+    tweetingStatus = message || `${payload.release.author.login} just published a release. More info is available here: ${payload.relese.url}`;
     break;
   default:
     if (message) {
