@@ -101,7 +101,7 @@ switch (process.env.GITHUB_EVENT_NAME) {
     tweetingStatus = message || `${payload.pusher.name} just created a commit to ${payload.repository.full_name}. More details are available here: ${payload.commits[0].url}`;
     break;
   case "pull_request":
-    tweetingStatus = message || `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
+    tweetingStatus = message || `${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
     break;
   case "release":
     tweetingStatus = message || `A new release ${payload.release.tag_name} in ${payload.repository.full_name}. More details are available here ${payload.release.html_url}`;
@@ -114,6 +114,7 @@ switch (process.env.GITHUB_EVENT_NAME) {
     }
     break;
 }
+
 
 validateInput(consumer_key, "consumer_key");
 validateInput(consumer_secret, "consumer_secret");
