@@ -23,7 +23,7 @@ switch (process.env.GITHUB_EVENT_NAME) {
     tweetingStatus = message || `${payload.pusher.name} just created a push: ${payload.commits[0].message}. More info is available here: ${payload.sender.url}`;
     break;
   case "pull_request":
-    tweetingStatus = message || `${payload.pull_request.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.url}`;
+    tweetingStatus = message || `${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
     break;
   case "release":
     tweetingStatus = message || `${payload.release.author.login} just published a release. More info is available here: ${payload.relese.url}`;
