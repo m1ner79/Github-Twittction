@@ -115,6 +115,7 @@ switch (process.env.GITHUB_EVENT_NAME) {
     break;
 }
 
+
 validateInput(consumer_key, "consumer_key");
 validateInput(consumer_secret, "consumer_secret");
 validateInput(access_token_key, "access_token_key");
