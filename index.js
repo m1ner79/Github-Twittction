@@ -4,10 +4,10 @@ const { readFileSync } = require("fs");
 const { validateInput} = require("./src/utils");
 const { postTweets} = require("./src/tweety");
 
-const consumer_key = core.getInput('twitter_consumer_key') || process.env.TWITTER_CONSUMER_KEY;
-const consumer_secret = core.getInput('twitter_consumer_secret') || process.env.TWITTER_CONSUMER_SECRET;
-const access_token_key = core.getInput('twitter_access_token_key') || process.env.TWITTER_ACCESS_TOKEN_KEY;
-const access_token_secret = core.getInput('twitter_access_token_secret') || process.env.TWITTER_ACCESS_TOKEN_SECRET;
+const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.GITHUB_TOKEN//process.env.TWITTER_CONSUMER_KEY;
+const consumer_secret = core.getInput('twitter_consumer_secret', { required: true }) || process.env.GITHUB_TOKEN//process.env.TWITTER_CONSUMER_SECRET;
+const access_token_key = core.getInput('twitter_access_token_key', { required: true }) || process.env.GITHUB_TOKEN//process.env.TWITTER_ACCESS_TOKEN_KEY;
+const access_token_secret = core.getInput('twitter_access_token_secret', { required: true }) || process.env.GITHUB_TOKEN//process.env.TWITTER_ACCESS_TOKEN_SECRET;
 
 const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
@@ -38,10 +38,10 @@ switch (process.env.GITHUB_EVENT_NAME) {
 }
 
 
-validateInput(consumer_key, "consumer_key");
-validateInput(consumer_secret, "consumer_secret");
-validateInput(access_token_key, "access_token_key");
-validateInput(access_token_secret, "access_token_secret");
+// validateInput(consumer_key, "consumer_key");
+// validateInput(consumer_secret, "consumer_secret");
+// validateInput(access_token_key, "access_token_key");
+// validateInput(access_token_secret, "access_token_secret");
 
 
 const client = new Twitter({
