@@ -79,7 +79,7 @@ module.exports = require("os");
 const Twitter = __webpack_require__(851);
 const core = __webpack_require__(470);
 const { readFileSync } = __webpack_require__(747);
-const { validateInput} = __webpack_require__(543);
+//const { validateInput} = require("./src/utils");
 const { postTweets} = __webpack_require__(0);
 
 const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
@@ -2121,21 +2121,6 @@ function getState(name) {
 }
 exports.getState = getState;
 //# sourceMappingURL=core.js.map
-
-/***/ }),
-
-/***/ 543:
-/***/ (function(module) {
-
-//validating twitter cridentials
-function validateInput(inputValue, inputName){
-    if (inputValue) return;
-  
-    core.setFailed(`${inputName} is missing!`);
-    throw new Error("input missing");
-  }
-
-  module.exports.validateInput = validateInput;
 
 /***/ }),
 

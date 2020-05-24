@@ -1,7 +1,7 @@
 const Twitter = require('twitter-lite');
 const core = require('@actions/core');
 const { readFileSync } = require("fs");
-const { validateInput} = require("./src/utils");
+//const { validateInput} = require("./src/utils");
 const { postTweets} = require("./src/tweety");
 
 const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
