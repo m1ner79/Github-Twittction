@@ -56,7 +56,7 @@ const paramPost = {status: tweetingStatus};
 
 
 function getServerResponse(p){
-  console.log(p.data.id, p.text, p.created_at);
+  console.log(p.id, p.text, p.created_at);
 }
 
 
