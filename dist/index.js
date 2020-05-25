@@ -82,18 +82,22 @@ const { readFileSync } = __webpack_require__(747);
 //const { validateInput} = require("./src/utils");
 const { postTweets} = __webpack_require__(0);
 
+const client = new Twitter({
+  consumer_key: consumer_key,
+  consumer_secret: consumer_secret,
+  access_token_key: access_token_key,
+  access_token_secret: access_token_secret
+});
+
 const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret', { required: true }) || process.env.TWITTER_CONSUMER_SECRET;
 const access_token_key = core.getInput('twitter_access_token_key', { required: true }) || process.env.TWITTER_ACCESS_TOKEN_KEY;
 const access_token_secret = core.getInput('twitter_access_token_secret', { required: true }) || process.env.TWITTER_ACCESS_TOKEN_SECRET;
-
+const message = core.getInput('twitter_status');
 const payload = JSON.parse(
   readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
 );
 
-const message = core.getInput('twitter_status');
-
-//const defaultCommitMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
 
 let tweetingStatus;
 
@@ -116,31 +120,20 @@ switch (process.env.GITHUB_EVENT_NAME) {
     break;
 }
 
-
-// validateInput(consumer_key, "consumer_key");
-// validateInput(consumer_secret, "consumer_secret");
-// validateInput(access_token_key, "access_token_key");
-// validateInput(access_token_secret, "access_token_secret");
-
-
-const client = new Twitter({
-    consumer_key: consumer_key,
-    consumer_secret: consumer_secret,
-    access_token_key: access_token_key,
-    access_token_secret: access_token_secret
-  });
-
-
 const paramPost = {status: tweetingStatus};
 
 
 function getServerResponse(p){
-  console.log(p.id, p.text, p.created_at);
+  console.log(p.data.id, p.text, p.created_at);
 }
 
 
 //getTweets(params).then((m)=>{getServerResponse(m[0])});
-postTweets(client, paramPost).then(getServerResponse);
+postTweets(client, paramPost).then((res)=>{
+  core.debug(res.id)
+}).catch((error)=>{
+  core.error
+});
 
 
 
