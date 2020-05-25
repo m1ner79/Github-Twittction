@@ -14,6 +14,7 @@ const payload = JSON.parse(
 );
 
 const message = core.getInput('twitter_status');
+
 //const defaultCommitMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
 
 let tweetingStatus;
