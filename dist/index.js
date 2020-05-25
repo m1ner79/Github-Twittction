@@ -120,6 +120,7 @@ switch (process.env.GITHUB_EVENT_NAME) {
     break;
 }
 
+
 const paramPost = {status: tweetingStatus};
 
 
@@ -129,11 +130,7 @@ function getServerResponse(p){
 
 
 //getTweets(params).then((m)=>{getServerResponse(m[0])});
-postTweets(client, paramPost).then((res)=>{
-  core.debug(res.id)
-}).catch((error)=>{
-  core.error
-});
+postTweets(client, paramPost).then(getServerResponse);
 
 
 
