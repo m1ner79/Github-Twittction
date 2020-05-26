@@ -48,14 +48,7 @@ const client = new Twitter({
 
 const paramPost = {status: tweetingStatus};
 
-
-function getServerResponse(p){
-  console.log(p.id, p.text, p.created_at);
-}
-
-
-//getTweets(params).then((m)=>{getServerResponse(m[0])});
 postTweets(client, paramPost)
-  .then((resp)=>{core.debug(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id}`)})
+  .then((resp)=>{core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id}`)})
   .catch((err)=>{throw new Error(err.message)});
 
