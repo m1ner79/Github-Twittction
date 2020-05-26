@@ -1,4 +1,5 @@
-# Twitter github action
+![twittergithubaction logo](img/tgalogo.png)
+# Twitter Github Action
 
 This action will post on twitter every time there is an event on a github repository.
 
