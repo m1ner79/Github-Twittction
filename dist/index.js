@@ -79,8 +79,14 @@ module.exports = require("os");
 const Twitter = __webpack_require__(851);
 const core = __webpack_require__(470);
 const { readFileSync } = __webpack_require__(747);
-//const { validateInput} = require("./src/utils");
 const { postTweets} = __webpack_require__(0);
+
+const client = new Twitter({
+  consumer_key,
+  consumer_secret,
+  access_token_key,
+  access_token_secret
+});
 
 const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret', { required: true }) || process.env.TWITTER_CONSUMER_SECRET;
@@ -92,7 +98,6 @@ const payload = JSON.parse(
 );
 
 const message = core.getInput('twitter_status');
-//const defaultCommitMessage = `${payload.commits[0].author.name} just created a commit: ${payload.commits[0].message}. More info is available here: ${payload.commits[0].url}`;
 
 let tweetingStatus;
 
@@ -114,15 +119,6 @@ switch (process.env.GITHUB_EVENT_NAME) {
     }
     break;
 }
-
-
-const client = new Twitter({
-    consumer_key: consumer_key,
-    consumer_secret: consumer_secret,
-    access_token_key: access_token_key,
-    access_token_secret: access_token_secret
-  });
-
 
 const paramPost = {status: tweetingStatus};
 
