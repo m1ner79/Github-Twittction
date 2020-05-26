@@ -116,12 +116,6 @@ switch (process.env.GITHUB_EVENT_NAME) {
 }
 
 
-// validateInput(consumer_key, "consumer_key");
-// validateInput(consumer_secret, "consumer_secret");
-// validateInput(access_token_key, "access_token_key");
-// validateInput(access_token_secret, "access_token_secret");
-
-
 const client = new Twitter({
     consumer_key: consumer_key,
     consumer_secret: consumer_secret,
@@ -139,7 +133,9 @@ function getServerResponse(p){
 
 
 //getTweets(params).then((m)=>{getServerResponse(m[0])});
-postTweets(client, paramPost).then(getServerResponse);
+postTweets(client, paramPost)
+  .then((resp)=>{core.debug(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id}`)})
+  .catch((err)=>{throw new Error(err.message)});
 
 
 
