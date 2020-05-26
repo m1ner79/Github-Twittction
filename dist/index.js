@@ -79,7 +79,8 @@ module.exports = require("os");
 const Twitter = __webpack_require__(851);
 const core = __webpack_require__(470);
 const { readFileSync } = __webpack_require__(747);
-const { postTweets} = __webpack_require__(0);
+const { postTweets } = __webpack_require__(0);
+//const { defaultMessages } = require("./src/utils");
 
 const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret', { required: true }) || process.env.TWITTER_CONSUMER_SECRET;
@@ -100,7 +101,7 @@ const payload = JSON.parse(
 const message = core.getInput('twitter_status');
 
 let tweetingStatus;
-
+//defaultMessages
 switch (process.env.GITHUB_EVENT_NAME) {
   case "push":
     tweetingStatus = message || `${payload.pusher.name} just created a commit to ${payload.repository.full_name}. More details are available here: ${payload.commits[0].url}`;

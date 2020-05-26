@@ -7,9 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "package": "ncc build index.js -o dist",
-    "gitAdd": "git add dist/index.js"
+    "gitAdd": "git add dist/index.js",
+    "gen-readme-toc": "markdown-toc -i README.md"
   },
-  "pre-commit": ["package", "gitAdd"],
+  "pre-commit": [
+    "package",
+    "gitAdd"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/m1ner79/twitterGitHubActions.git"
@@ -25,6 +29,7 @@
   "homepage": "https://github.com/m1ner79/twitterGitHubActions#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
+    "markdown-toc": "^1.2.0",
     "twitter-lite": "^0.9.4"
   },
   "devDependencies": {
