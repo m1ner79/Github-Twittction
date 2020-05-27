@@ -6,4 +6,4 @@ function defaultMessages(ts, inputName){
     throw new Error("input missing");
   }
 
-  module.exports.validateInput = validateInput;
+  module.exports.defaultMessages = defaultMessages;

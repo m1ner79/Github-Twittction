@@ -1,5 +1,5 @@
 name: 'testing workflow'
-# Trigger on push
+# Trigger on push, pull_request, release
 on: 
   push:
     branches:
@@ -12,7 +12,7 @@ on:
       - published
 jobs:
   test:
-    name: somethingDope
+    name: posting_on_twitter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
