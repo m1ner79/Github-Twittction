@@ -17,7 +17,7 @@
 
 ## Overview
 
-This action will post on twitter every time there is a supported event on a github repository. 
+This action will post on twitter every time there is a supported event on a github repository. </br>
 Currently the app supports these events: push, pull_request and release.
 
 ## Motivation
@@ -26,12 +26,11 @@ I am using this project to hone my coding skills. I have some but they are not t
 
 ## What do you need?
 
-First. You need to go here [https://developer.twitter.com/en/apps] and create an app.
+First. You need to go here [https://developer.twitter.com/en/apps] and create an app.</br>
 Now that you have an app, you need to click on details and then select tab "Keys and tokens".
-You will need Consumer API keys and also you need to generate Acces token & access token secret.
-Copy your keys and tokens and then go to the github repo you wish to brag about on twitter. Select settings tab and then click on Secrets(on your left).
+You will need Consumer API keys and also you need to generate Acces token & access token secret.</br>
+Copy your keys and tokens and then go to the github repo you wish to brag about on twitter. Select settings tab and then click on Secrets (on your left).
 Press "New secret" to add your keys and tokens and you are almost ready. 
-Please read further :point_down: for more details.
 
 ## Requirements
 
@@ -43,7 +42,7 @@ npm install @actions/core
 npm install twitter_lite
 ```
 
-### Example usage
+## Example usage
 
 ```sh
 name: 'testing workflow'
@@ -83,8 +82,7 @@ I used these two websites:
 * [https://lingojam.com/TwitterFonts] 
 * [https://www.piliapp.com.twitter-symbols/]
 
-to create my post.
-Go nuts and make it as sparkly as you like(just remember about twitter character limitations :arrow_right: [https://developer.twitter.com/en/docs/basics/counting-characters]). 
+to create my post. Go nuts and make it as sparkly as you like (just remember about twitter character limitations [https://developer.twitter.com/en/docs/basics/counting-characters]). 
 
 If you don't have a custom message and supported event is triggered, then one of these default messages will be posted on your twitter timeline:
 ```sh
@@ -110,9 +108,9 @@ switch (process.env.GITHUB_EVENT_NAME) {
     break;
 }
 ```
-## Contributing
+## Contributing 
 
-Contributions ar more than welcome.
+Contributions ar more than welcome :handshake:.
 
 ## License
 
