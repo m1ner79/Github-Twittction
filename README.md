@@ -1,11 +1,30 @@
 ![twittergithubaction logo](img/tgalogo.png)
-# Twitter Github Action
+# Twitter Github Actions
 
-This action will post on twitter every time there is an event on a github repository.
+> :warning: Please, use it only at your own risk. This is very early stage development and on top of that - I am a very inexperienced programmer.
 
-## Warning!
+<!-- toc -->
 
-Please use it only at your own risk. This is very early stage development and on top of that I am a very inexperienced programmer.
+
+
+<!-- tocstop -->
+
+## Overview
+
+This action will post on twitter every time there is a supported event on a github repository.
+
+## Motivation
+
+I am using this project to hone my coding skills. I have some but they are not the greatest. I believe that with help of my brother/mentor, this project could be a stepping stone towards my new career.
+
+
+
+## How to use
+
+
+## License
+
+MIT
 
 ### Example usage
 
