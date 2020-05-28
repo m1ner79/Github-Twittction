@@ -1,5 +1,5 @@
-![twittergithubaction logo](img/tgalogo.png)
-# Twitter Github Actions
+![Github Twittction logo](img/twitter_header_photo_2.png)
+# Github Twittction
 
 > :warning: Please, use it only at your own risk. This is very early stage development and on top of that - I am a very inexperienced programmer.
 
@@ -89,9 +89,7 @@ If you don't have a custom message and supported event is triggered, then one of
 let tweetingStatus;
 //defaultMessages
 
-switch (process.env.GITHUB_EVENT_NAME) {
-  case "push":
-    tweetingStatus = message || `${payload.pusher.name} just created a commit to ${payload.repository.full_name}. More details are available here: ${payload.commits[0].url}`;
+switch (process.env.GITHUB_E1265750786157547500_name}. More details are available here: ${payload.commits[0].url}`;
     break;
   case "pull_request":
     tweetingStatus = message || `${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
