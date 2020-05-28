@@ -10,6 +10,11 @@
 - [What do you need?](#what-do-you-need)
 - [Requirements](#requirements)
 - [Example usage](#example-usage)
+  * [push event](#push-event)
+  * [pull_request event](#pull_request-event)
+  * [release event](#release-event)
+  * [Without custome message](#without-custome-message)
+  * [Default messages](#default-messages)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -28,8 +33,11 @@ Here you can see default messages: <link do tego paragrafu>
 I am using this project to hone my coding skills. I have some but they are not the greatest. I believe that with help of my brother/mentor :heart_eyes:, this project could be a stepping stone towards my new career.
 
 ## What do you need?
+>  :exclamation: For this paragraph I would like to thank https://github.com/gr2m/twitter-together. Amazing job :sparkles: I learned a lot :chart_with_upwards_trend:
 
 [Create a twitter](docs/setup.md) app with your shared twitter account and store the credentials as `TWITTER_API_KEY`, `TWITTER_API_SECRET_KEY`, `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_TOKEN_SECRET` in your repository’s secrets settings.
+
+> :boom: Hopefully in the future people will be copying my code :pray:
 
 ## Requirements
 
@@ -43,10 +51,11 @@ npm install twitter_lite
 
 ## Example usage
 
+### push event
+
 ```sh
 name: 'testing workflow'
-# Trigger on push, pull_request, release
-on: 
+# Trigger on push
   push:
     branches:
       - master
@@ -71,40 +80,108 @@ jobs:
             twitter_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
 ```
 
-As you can see :point_down:
+### pull_request event
+
 ```sh
-twitter_status:
+name: 'testing workflow'
+# Trigger on pull_request
+on: 
+  pull_request:
+    types:
+      - opened
+jobs:
+  test:
+    name: posting_on_twitter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+            twitter_status: "🅆🄴 🄲🄰🄽 🅂🄴🄴 🄰 🄿🅄🄻🄻_🅁🄴🅀🅄🄴🅂🅃 ${github.event.pull_request.title} 🄲🅁🄴🄰🅃🄴🄳 🄱🅈 ${github.event.pull_request.head.repo.full_name} 🄲🄻🄸🄲🄺 🄷🄴🅁🄴 ${github.event.pull_request.html_url} 🄰🄽🄳 🅂🄴🄴 🄸🅃 🅈🄾🅄🅁🅂🄴🄻🄵"
+            twitter_consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }} 
+            twitter_consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
+            twitter_access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
+            twitter_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
 ```
-allowes user to create a custom twitter post.
+
+### release event
+
+```sh
+name: 'testing workflow'
+# Trigger on release
+on: 
+  release:
+    types: 
+      - published
+jobs:
+  test:
+    name: posting_on_twitter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+            twitter_status: "ℍ𝕖𝕪 𝕪𝕠𝕦! 👋 𝕎𝕖 ${{ github.event.repository.owner.name}} 𝕙𝕒𝕧𝕖 𝕒 𝕟𝕖𝕨 𝕔𝕠𝕞𝕞𝕚𝕥 𝕚𝕟 𝕥𝕙𝕖 𝕞𝕒𝕤𝕥𝕖𝕣 𝕓𝕣𝕒𝕟𝕔𝕙 🥳 \n 𝕀𝕥𝕤 𝕟𝕒𝕞𝕖 𝕚𝕤 ${{ github.event.commits[0].message }} 😱 \n ℂ𝕙𝕖𝕔𝕜 𝕚𝕥 𝕠𝕦𝕥 𝕙𝕖𝕣𝕖 👇 \n ${{ github.event.commits[0].url }}"
+            twitter_consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }} 
+            twitter_consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
+            twitter_access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
+            twitter_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
+```
+
+### Without custome message
+
+```sh
+name: 'testing workflow'
+# Trigger on push, pull_request, release
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+  release:
+    types: 
+      - published
+jobs:
+  test:
+    name: posting_on_twitter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+            #twitter_status: is deactivated so you will see one of our default messages
+            # twitter_status: "ℍ𝕖𝕪 𝕪𝕠𝕦! 👋 𝕎𝕖 ${{ github.event.repository.owner.name}} 𝕙𝕒𝕧𝕖 𝕒 𝕟𝕖𝕨 𝕔𝕠𝕞𝕞𝕚𝕥 𝕚𝕟 𝕥𝕙𝕖 𝕞𝕒𝕤𝕥𝕖𝕣 𝕓𝕣𝕒𝕟𝕔𝕙 🥳 \n 𝕀𝕥𝕤 𝕟𝕒𝕞𝕖 𝕚𝕤 ${{ github.event.commits[0].message }} 😱 \n ℂ𝕙𝕖𝕔𝕜 𝕚𝕥 𝕠𝕦𝕥 𝕙𝕖𝕣𝕖 👇 \n ${{ github.event.commits[0].url }}"
+            twitter_consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }} 
+            twitter_consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
+            twitter_access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
+            twitter_access_token_secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} 
+```
+
+### Default messages
+```sh
+push default message:
+`${payload.pusher.name} just created a commit to ${payload.repository.full_name}. More details are available here: ${payload.commits[0].url}`
+
+pull_request default message:
+`${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
+
+release default message:
+`A new release ${payload.release.tag_name} in ${payload.repository.full_name}. More details are available here ${payload.release.html_url}`;
+
+```
+
+To create a custom twitter post.
 
 I used these two websites:
-* [https://lingojam.com/TwitterFonts] 
-* [https://www.piliapp.com.twitter-symbols/]
+* https://lingojam.com/TwitterFonts 
+* https://www.piliapp.com/twitter-symbols/
 
-to create my post. Go nuts and make it as sparkly as you like (just remember about twitter character limitations [https://developer.twitter.com/en/docs/basics/counting-characters]). 
+to create my post. Go nuts and make it as sparkly as you like (just remember about twitter character limitations https://developer.twitter.com/en/docs/basics/counting-characters). 
 
 If you don't have a custom message and supported event is triggered, then one of these default messages will be posted on your twitter timeline:
-```sh
-let tweetingStatus;
-//defaultMessages
 
-switch (process.env.GITHUB_E1265750786157547500_name}. More details are available here: ${payload.commits[0].url}`;
-    break;
-  case "pull_request":
-    tweetingStatus = message || `${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
-    break;
-  case "release":
-    tweetingStatus = message || `A new release ${payload.release.tag_name} in ${payload.repository.full_name}. More details are available here ${payload.release.html_url}`;
-    break;
-  default:
-    if (message) {
-      tweetingStatus = message;
-    } else {
-      throw new Error(`${process.env.GITHUB_EVENT_NAME} is not supported with default message. Provide custom message using tweeter_status input parameter.`);
-    }
-    break;
-}
-```
 ## Contributing 
 
 Contributions ar more than welcome :handshake:.
