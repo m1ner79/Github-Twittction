@@ -46,6 +46,6 @@ switch (process.env.GITHUB_EVENT_NAME) {
 const paramPost = {status: tweetingStatus};
 
 postTweets(client, paramPost)
-  .then((resp)=>{core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id}`)})
+  .then((resp)=>{core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id}`); console.log(resp)})
   .catch((err)=>{throw new Error(err.message)});
 
