@@ -9,7 +9,7 @@
 - [Motivation](#motivation)
 - [What do you need?](#what-do-you-need)
 - [Requirements](#requirements)
-  * [Example usage](#example-usage)
+- [Example usage](#example-usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -17,8 +17,11 @@
 
 ## Overview
 
-This action will post on twitter every time there is a supported event on a github repository. </br>
-Currently the app supports these events: push, pull_request and release.
+This action supports every github event. Currently the app publish default messages to twitter when one of these GitHub events will trigger: 
+* push
+* pull_request
+* release
+Here you can see default messages: <link do tego paragrafu>
 
 ## Motivation
 
@@ -26,11 +29,7 @@ I am using this project to hone my coding skills. I have some but they are not t
 
 ## What do you need?
 
-First. You need to go here [https://developer.twitter.com/en/apps] and create an app.</br>
-Now that you have an app, you need to click on details and then select tab "Keys and tokens".
-You will need Consumer API keys and also you need to generate Acces token & access token secret.</br>
-Copy your keys and tokens and then go to the github repo you wish to brag about on twitter. Select settings tab and then click on Secrets (on your left).
-Press "New secret" to add your keys and tokens and you are almost ready. 
+[Create a twitter](docs/setup.md) app with your shared twitter account and store the credentials as `TWITTER_API_KEY`, `TWITTER_API_SECRET_KEY`, `TWITTER_ACCESS_TOKEN` and `TWITTER_ACCESS_TOKEN_SECRET` in your repository’s secrets settings.
 
 ## Requirements
 
