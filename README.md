@@ -12,7 +12,7 @@
   * [push event](#push-event)
   * [pull_request event](#pull_request-event)
   * [release event](#release-event)
-  * [Without custome message](#without-custome-message)
+  * [Without custom message](#without-custom-message)
   * [Default messages](#default-messages)
   * [Custom message](#custom-message)
 - [Contributing](#contributing)
@@ -40,6 +40,8 @@ I am using this project to hone my coding skills. I have some but they are not t
 > :boom: Hopefully in the future people will be copying my code :pray:
 
 ## Example usage
+
+> :exclamation: Make sure to replace {VERSION} with the version of the action that you wish to use.
 
 ### push event
 
