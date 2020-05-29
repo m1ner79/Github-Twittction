@@ -83,7 +83,7 @@ jobs:
       - name: tweety
         uses: m1ner79/Github-Twittction@{VERSION}
         with:
-            twitter_status: "🅆🄴 🄲🄰🄽 🅂🄴🄴 🄰 🄿🅄🄻🄻_🅁🄴🅀🅄🄴🅂🅃 ${github.event.pull_request.title} 🄲🅁🄴🄰🅃🄴🄳 🄱🅈 ${github.event.pull_request.head.repo.full_name} 🄲🄻🄸🄲🄺 🄷🄴🅁🄴 ${github.event.pull_request.html_url} 🄰🄽🄳 🅂🄴🄴 🄸🅃 🅈🄾🅄🅁🅂🄴🄻🄵"
+            twitter_status: "🅆🄴 🄲🄰🄽 🅂🄴🄴 🄰 🄿🅄🄻🄻_🅁🄴🅀🅄🄴🅂🅃 ${{github.event.pull_request.title}} 🄲🅁🄴🄰🅃🄴🄳 🄱🅈 ${{github.event.pull_request.head.repo.full_name}} 🄲🄻🄸🄲🄺 🄷🄴🅁🄴 ${{github.event.pull_request.html_url}} 🄰🄽🄳 🅂🄴🄴 🄸🅃 🅈🄾🅄🅁🅂🄴🄻🄵"
             twitter_consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }} 
             twitter_consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
             twitter_access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
@@ -107,7 +107,7 @@ jobs:
       - name: tweety
         uses: m1ner79/Github-Twittction@{VERSION}
         with:
-            twitter_status: "Ⓛⓞⓞⓚⓢ ⓛⓘⓚⓔ ⓐ ⓝⓔⓦ ⓡⓔⓛⓔⓐⓢⓔ ${github.event.release.tag_name} ⓘⓢ ⓘⓝ ${github.event.repository.full_name} .Ⓜⓞⓡⓔ ⓓⓔⓣⓐⓘⓛⓢ ⓐⓡⓔ ⓐⓥⓐⓘⓛⓐⓑⓛⓔ ⓗⓔⓡⓔ ${github.event.release.html_url} "
+            twitter_status: "Ⓛⓞⓞⓚⓢ ⓛⓘⓚⓔ ⓐ ⓝⓔⓦ ⓡⓔⓛⓔⓐⓢⓔ ${{github.event.release.tag_name}} ⓘⓢ ⓘⓝ ${{github.event.repository.full_name}} .Ⓜⓞⓡⓔ ⓓⓔⓣⓐⓘⓛⓢ ⓐⓡⓔ ⓐⓥⓐⓘⓛⓐⓑⓛⓔ ⓗⓔⓡⓔ ${{github.event.release.html_url}}"
             twitter_consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }} 
             twitter_consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
             twitter_access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
