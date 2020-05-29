@@ -1,15 +1,9 @@
 name: 'testing workflow'
 # Trigger on push, pull_request, release
 on: 
-  #push:
-    #branches:
-    #  - master
-  pull_request:
-    types:
-      - opened
-  #release:
-    #types: 
-    #  - published
+  push:
+    branches:
+      - master
 jobs:
   test:
     name: posting_on_twitter
