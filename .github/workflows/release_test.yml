@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-            twitter_status: "Ⓛⓞⓞⓚⓢ ⓛⓘⓚⓔ ⓐ ⓝⓔⓦ ⓡⓔⓛⓔⓐⓢⓔ ${github.event.release.tag_name} ⓘⓢ ⓘⓝ ${github.event.repository.full_name} .Ⓜⓞⓡⓔ ⓓⓔⓣⓐⓘⓛⓢ ⓐⓡⓔ ⓐⓥⓐⓘⓛⓐⓑⓛⓔ ⓗⓔⓡⓔ ${github.event.release.html_url} "
+            #twitter_status: "Ⓛⓞⓞⓚⓢ ⓛⓘⓚⓔ ⓐ ⓝⓔⓦ ⓡⓔⓛⓔⓐⓢⓔ ${github.event.release.tag_name} ⓘⓢ ⓘⓝ ${github.event.repository.full_name} . Ⓜⓞⓡⓔ ⓓⓔⓣⓐⓘⓛⓢ ⓐⓡⓔ ⓐⓥⓐⓘⓛⓐⓑⓛⓔ ⓗⓔⓡⓔ ${github.event.release.html_url} "
             twitter_consumer_key: ${{ secrets.TWITTER_CONSUMER_KEY }} 
             twitter_consumer_secret: ${{ secrets.TWITTER_CONSUMER_SECRET }} 
             twitter_access_token_key: ${{ secrets.TWITTER_ACCESS_TOKEN_KEY }} 
