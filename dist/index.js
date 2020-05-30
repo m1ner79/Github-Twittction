@@ -46,13 +46,12 @@ module.exports =
 /***/ 0:
 /***/ (function(module) {
 
-async function postTweets(client, p){
-    try{
-      return await client.post('statuses/update', p);
-    }
-    catch(error){
-      console.log('post failed', error);
-    }
+async function postTweets(client, p) {
+  try {
+    return await client.post('statuses/update', p);
+  } catch (error) {
+    console.log('post failed', error);
+  }
 }
 module.exports.postTweets = postTweets;
 
@@ -97,7 +96,7 @@ const client = new Twitter({
 });
 
 const payload = JSON.parse(
-  readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
+  readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
 );
 
 const tweetingStatus  = message || getDefaultMessage(process.env.GITHUB_EVENT_NAME, payload);
@@ -105,8 +104,8 @@ const tweetingStatus  = message || getDefaultMessage(process.env.GITHUB_EVENT_NA
 const paramPost = {status: tweetingStatus};
 
 postTweets(client, paramPost)
-  .then((resp)=>{core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id_str}`)})
-  .catch((err)=>{throw new Error(err.message)});
+  .then((resp) => {core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id_str}`);})
+  .catch((err) => {throw new Error(err.message);});
 
 
 
@@ -2095,26 +2094,25 @@ exports.getState = getState;
 /***/ (function(module) {
 
 
-function getDefaultMessage(eventName, payload){
+function getDefaultMessage(eventName, payload) {
   let tweetingStatus;
-  //defaultMessages
   switch (eventName) {
-    case "push":
-      tweetingStatus = `${payload.pusher.name} just created a commit to ${payload.repository.full_name}. More details are available here: ${payload.commits[0].url}`;
-      break;
-    case "pull_request":
-      tweetingStatus = `${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
-      break;
-    case "release":
-      tweetingStatus = `A new release ${payload.release.tag_name} in ${payload.repository.full_name}. More details are available here ${payload.release.html_url}`;
-      break;
-    default:
-        throw new Error(`${eventName} is not supported with default message. Provide custom message using tweeter_status input parameter.`);
-      break;
+  case 'push':
+    tweetingStatus = `${payload.pusher.name} just created a commit to ${payload.repository.full_name}. More details are available here: ${payload.commits[0].url}`;
+    break;
+  case 'pull_request':
+    tweetingStatus = `${payload.pull_request.head.repo.full_name} just created a pull request: ${payload.pull_request.title}. More info is available here: ${payload.pull_request.html_url}`;
+    break;
+  case 'release':
+    tweetingStatus = `A new release ${payload.release.tag_name} in ${payload.repository.full_name}. More details are available here ${payload.release.html_url}`;
+    break;
+  default:
+    throw new Error(`${eventName} is not supported with default message. Provide custom message using tweeter_status input parameter.`);
+    break;
   }
   return tweetingStatus;
-}
-  module.exports.getDefaultMessage = getDefaultMessage;
+} 
+module.exports.getDefaultMessage = getDefaultMessage;
 
 /***/ }),
 

@@ -1,8 +1,8 @@
 const Twitter = require('twitter-lite');
 const core = require('@actions/core');
-const { readFileSync } = require("fs");
-const { postTweets } = require("./src/tweety");
-const { getDefaultMessage } = require("./src/utils");
+const { readFileSync } = require('fs');
+const { postTweets } = require('./src/tweety');
+const { getDefaultMessage } = require('./src/utils');
 
 const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
 const consumer_secret = core.getInput('twitter_consumer_secret', { required: true }) || process.env.TWITTER_CONSUMER_SECRET;
@@ -19,7 +19,7 @@ const client = new Twitter({
 });
 
 const payload = JSON.parse(
-  readFileSync(process.env.GITHUB_EVENT_PATH, "utf8")
+  readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
 );
 
 const tweetingStatus  = message || getDefaultMessage(process.env.GITHUB_EVENT_NAME, payload);
@@ -27,6 +27,6 @@ const tweetingStatus  = message || getDefaultMessage(process.env.GITHUB_EVENT_NA
 const paramPost = {status: tweetingStatus};
 
 postTweets(client, paramPost)
-  .then((resp)=>{core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id_str}`)})
-  .catch((err)=>{throw new Error(err.message)});
+  .then((resp) => {core.info(`Your tweet is posted here: https://twitter.com/${resp.user.screen_name}/status/${resp.id_str}`);})
+  .catch((err) => {throw new Error(err.message);});
 

@@ -8,7 +8,9 @@
     "start": "node index.js",
     "package": "ncc build index.js -o dist",
     "gitAdd": "git add dist/index.js",
-    "gen-readme-toc": "markdown-toc -i README.md"
+    "gen-readme-toc": "markdown-toc -i README.md",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix ."
   },
   "pre-commit": [
     "package",
@@ -34,6 +36,9 @@
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.1",
+    "eslint": "^7.1.0",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-sonarjs": "^0.5.0",
     "jest": "^25.4.0",
     "pre-commit": "^1.2.2"
   }
