@@ -1,4 +1,10 @@
-
+/**
+   * Select which default message should be posted.
+   *
+   * @param  {String} eventName Name of GitHub event.
+   * @param  {Object} payload Payload of GitHub event.
+   * @return {String} 
+   */
 function getDefaultMessage(eventName, payload) {
   let tweetingStatus;
   switch (eventName) {

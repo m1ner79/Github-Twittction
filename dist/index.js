@@ -46,6 +46,13 @@ module.exports =
 /***/ 0:
 /***/ (function(module) {
 
+/**
+   * Post tweet on users timeline.
+   *
+   * @param  {Object} client Twitter api client.
+   * @param  {Object} p Object containing statust property with Twitter message.
+   * @return {Promise[Object]} 
+   */
 async function postTweets(client, p) {
   try {
     return await client.post('statuses/update', p);
@@ -2093,7 +2100,13 @@ exports.getState = getState;
 /***/ 543:
 /***/ (function(module) {
 
-
+/**
+   * Select which default message should be posted.
+   *
+   * @param  {String} eventName Name of GitHub event.
+   * @param  {Object} payload Payload of GitHub event.
+   * @return {String} 
+   */
 function getDefaultMessage(eventName, payload) {
   let tweetingStatus;
   switch (eventName) {
