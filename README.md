@@ -163,7 +163,7 @@ Go nuts and make it as sparkly as you like (just remember about twitter characte
 
 ## Contributing 
 
-Contributions ar more than welcome :handshake:.
+[Contributions](docs/contributing.md) are more than welcome :handshake:.
 
 ## License
 

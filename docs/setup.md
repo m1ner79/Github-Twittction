@@ -1,6 +1,3 @@
-<!-- toc -->
-
-<!-- tocstop -->
 # Create a twitter app
 
 You can create a twitter app for your twitter account at https://developer.twitter.com/en/apps.
