@@ -88,10 +88,10 @@ const { readFileSync } = __webpack_require__(747);
 const { postTweets } = __webpack_require__(0);
 const { getDefaultMessage } = __webpack_require__(543);
 
-const consumer_key = core.getInput('twitter_consumer_key', { required: true }) || process.env.TWITTER_CONSUMER_KEY;
-const consumer_secret = core.getInput('twitter_consumer_secret', { required: true }) || process.env.TWITTER_CONSUMER_SECRET;
-const access_token_key = core.getInput('twitter_access_token_key', { required: true }) || process.env.TWITTER_ACCESS_TOKEN_KEY;
-const access_token_secret = core.getInput('twitter_access_token_secret', { required: true }) || process.env.TWITTER_ACCESS_TOKEN_SECRET;
+const consumer_key = process.env.TWITTER_CONSUMER_KEY || core.getInput('twitter_consumer_key', { required: true });
+const consumer_secret =  process.env.TWITTER_CONSUMER_SECRET || core.getInput('twitter_consumer_secret', { required: true });
+const access_token_key = process.env.TWITTER_ACCESS_TOKEN_KEY || core.getInput('twitter_access_token_key', { required: true });
+const access_token_secret = process.env.TWITTER_ACCESS_TOKEN_SECRET || core.getInput('twitter_access_token_secret', { required: true });
 
 const message = core.getInput('twitter_status');
 
