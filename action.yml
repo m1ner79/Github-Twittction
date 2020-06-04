@@ -1,4 +1,4 @@
-name : 'Twitter Action'
+name : 'GitHub Twittction'
 description: 'Post on twitter after different github events'
 inputs:
   twitter_status:
@@ -20,5 +20,5 @@ runs:
   using: 'node12'
   main: 'dist/index.js'
 branding:
-  icon: 'at-sign'
+  icon: 'hash'
   color: 'blue'
