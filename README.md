@@ -1,8 +1,6 @@
 ![Github Twittction logo](img/twitter_header_photo_2.png)
 # Github Twittction
 
-> :warning: Please, use it only at your own risk. This is very early stage development and on top of that - I am a very inexperienced programmer.
-
 <!-- toc -->
 
 - [Overview](#overview)
