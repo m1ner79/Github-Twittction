@@ -8,9 +8,8 @@
 2. Configure and install the dependencies.
 3. Create your branch from master.
 4. Make your changes in the code.
-5. Run tests: `npm run lint && jest`.
-6. Make sure that your code is sound: `npm run lint-fix`.
-7. Now you are ready to issue that pull request.
+5. Run tests: `npm test`, and fix any code issues with `npm run lint-fix`.
+6. Now you are ready to issue that pull request.
 
 ## Requirements
 
