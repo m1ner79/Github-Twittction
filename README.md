@@ -23,7 +23,8 @@
 This action supports every github event. Currently the app publish default messages to twitter when one of these GitHub events will trigger: 
 * push
 * pull_request
-* release
+* release <br />   
+
 Here you can see default messages: [Default messages](#default-messages)
 
 ## Motivation
