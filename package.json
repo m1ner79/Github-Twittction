@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/m1ner79/twitterGitHubActions#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "markdown-toc": "^1.2.0",
     "twitter-lite": "^0.9.4"
   },
